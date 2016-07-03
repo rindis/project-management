@@ -1,9 +1,10 @@
 package com.mrindaroy.projectmanagement;
 
+import org.junit.Test;
+
 public class ProjectMemberTest {
-  @org.junit.Test
+  @Test
   public void createEmptyProjectMember() throws Exception {
-
-
+    ProjectMember projectMember = new ProjectMember();
   }
 }
