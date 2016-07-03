@@ -15,6 +15,6 @@ public class ProjectTaskTest {
     task.registerHours(new ProjectMember(), hoursSpent);
 
     assertEquals(hoursSpent, task.totalHoursRegistered(), MIN_VALUE);
-    assertEquals(task.getHoursEstimate() - task.totalHoursRegistered(), task.hoursRemaining(), MIN_VALUE);
+    assertEquals(task.getHoursEstimate() - task.totalHoursRegistered(), task.getHoursRemaining(), MIN_VALUE);
   }
 }

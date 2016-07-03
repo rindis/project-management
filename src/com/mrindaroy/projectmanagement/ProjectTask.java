@@ -31,7 +31,7 @@ public class ProjectTask {
     this.hoursEstimate = hoursEstimate;
   }
 
-  public double hoursRemaining() {
+  public double getHoursRemaining() {
     return hoursEstimate - totalHoursRegistered();
   }
 

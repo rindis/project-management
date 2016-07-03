@@ -2,6 +2,8 @@ package com.mrindaroy.projectmanagement;
 
 import org.junit.Test;
 
+import static java.lang.Double.MIN_VALUE;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
 public class ProjectTest {
@@ -25,5 +27,22 @@ public class ProjectTest {
     project.addTask(task);
 
     assertSame(task, project.getTask(task.getId()));
+  }
+
+  @Test
+  public void registerHours() throws Exception {
+    Project project = new Project();
+    ProjectTask task = new ProjectTask();
+    task.setId("taskID");
+    project.addTask(task);
+    ProjectMember member = new ProjectMember();
+    member.setId("memberID");
+    project.addMember(member);
+
+    double hoursSpent = 12.34;
+    project.registerHours(member, task, hoursSpent);
+
+    assertEquals(hoursSpent, project.totalHoursRegistered(), MIN_VALUE);
+    assertEquals(project.getHoursEstimate() - project.totalHoursRegistered(), project.hoursRemaining(), MIN_VALUE);
   }
 }
