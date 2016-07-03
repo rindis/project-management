@@ -32,15 +32,10 @@ public class ProjectTask {
   }
 
   public double getHoursRemaining() {
-    return hoursEstimate - totalHoursRegistered();
+    return hoursEstimate - getTotalHoursRegistered();
   }
 
-  public double totalHoursRegistered() {
-    double totalHours = 0;
-    for (Double memberHours : hoursRegistered.values()) {
-      totalHours += memberHours;
-    }
-
-    return totalHours;
+  public double getTotalHoursRegistered() {
+    return hoursRegistered.values().stream().mapToDouble(Double::doubleValue).sum();
   }
 }

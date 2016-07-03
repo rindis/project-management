@@ -26,24 +26,15 @@ public class Project {
     task.registerHours(member, hoursSpent);
   }
 
-  public double totalHoursRegistered() {
-    final Double[] totalHoursRegistered = {0.0};
-    tasks.values().forEach(projectTask -> totalHoursRegistered[0] = totalHoursRegistered[0] + projectTask.totalHoursRegistered());
-
-    return totalHoursRegistered[0];
+  public double getTotalHoursRegistered() {
+    return tasks.values().stream().mapToDouble(ProjectTask::getTotalHoursRegistered).sum();
   }
 
   public double getHoursEstimate() {
-    final Double[] totalHoursEstimate = {0.0};
-    tasks.values().forEach(projectTask -> totalHoursEstimate[0] = totalHoursEstimate[0] + projectTask.getHoursEstimate());
-
-    return totalHoursEstimate[0];
+    return tasks.values().stream().mapToDouble(ProjectTask::getHoursEstimate).sum();
   }
 
-  public double hoursRemaining() {
-    final Double[] totalRemainingHours = {0.0};
-    tasks.values().forEach(projectTask -> totalRemainingHours[0] = totalRemainingHours[0] + projectTask.getHoursRemaining());
-
-    return totalRemainingHours[0];
+  public double getHoursRemaining() {
+    return tasks.values().stream().mapToDouble(ProjectTask::getHoursRemaining).sum();
   }
 }
