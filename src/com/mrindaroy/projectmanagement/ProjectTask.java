@@ -4,8 +4,9 @@ import java.util.HashMap;
 
 public class ProjectTask {
   private final HashMap<ProjectMember, Double> hoursRegistered = new HashMap<>();
+  private HashMap<String, ProjectMember> members = new HashMap<>();
   private String id;
-  private double hoursEstimate;
+  private double hoursEstimated;
 
   public String getId() {
     return id;
@@ -23,19 +24,35 @@ public class ProjectTask {
     }
   }
 
-  public double getHoursEstimate() {
-    return hoursEstimate;
+  public double getHoursEstimated() {
+    return hoursEstimated;
   }
 
-  public void setHoursEstimate(double hoursEstimate) {
-    this.hoursEstimate = hoursEstimate;
+  public void setHoursEstimated(double hoursEstimated) {
+    this.hoursEstimated = hoursEstimated;
   }
 
   public double getHoursRemaining() {
-    return hoursEstimate - getTotalHoursRegistered();
+    return hoursEstimated - getTotalHoursRegistered();
   }
 
   public double getTotalHoursRegistered() {
     return hoursRegistered.values().stream().mapToDouble(Double::doubleValue).sum();
+  }
+
+  public double getSpending() {
+    return hoursRegistered.keySet().stream().mapToDouble(member -> member.getHourlyRate() * hoursRegistered.get(member)).sum();
+  }
+
+  public double getBudget() {
+    return members.values().stream().mapToDouble(member -> (member.getHourlyRate() * hoursEstimated) / members.size()).sum();
+  }
+
+  public void addMember(ProjectMember member) {
+    members.put(member.getId(), member);
+  }
+
+  public ProjectMember getMember(String memberId) {
+    return members.get(memberId);
   }
 }

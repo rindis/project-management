@@ -1,7 +1,6 @@
 package com.mrindaroy.projectmanagement;
 
 public class ProjectMember {
-
   private Double hourlyRate;
   private String id;
 
@@ -17,11 +16,11 @@ public class ProjectMember {
     this.hourlyRate = hourlyRate;
   }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
   public String getId() {
     return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 }

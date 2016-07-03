@@ -31,7 +31,7 @@ public class Project {
   }
 
   public double getHoursEstimate() {
-    return tasks.values().stream().mapToDouble(ProjectTask::getHoursEstimate).sum();
+    return tasks.values().stream().mapToDouble(ProjectTask::getHoursEstimated).sum();
   }
 
   public double getHoursRemaining() {
