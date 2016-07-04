@@ -3,7 +3,7 @@ package com.mrindaroy.projectmanagement;
 import java.util.HashMap;
 
 class ProjectTask {
-  private final HashMap<ProjectMember, Double> hoursRegistered = new HashMap<>();
+  private final HashMap<ProjectMember, Double> registeredMemberHours = new HashMap<>();
   private String id;
   private double hoursEstimated;
 
@@ -16,7 +16,7 @@ class ProjectTask {
   }
 
   void registerHours(ProjectMember projectMember, double hoursSpent) {
-    hoursRegistered.put(projectMember, hoursRegistered.get(projectMember) + hoursSpent);
+    registeredMemberHours.put(projectMember, registeredMemberHours.get(projectMember) + hoursSpent);
   }
 
   void setHoursEstimated(double hoursEstimated) {
@@ -28,14 +28,14 @@ class ProjectTask {
   }
 
   double getHoursRegistered() {
-    return hoursRegistered.values().stream().mapToDouble(Double::doubleValue).sum();
+    return registeredMemberHours.values().stream().mapToDouble(Double::doubleValue).sum();
   }
 
   double getSpending() {
-    return hoursRegistered.keySet().stream().mapToDouble(member -> member.getHourlyRate() * hoursRegistered.get(member)).sum();
+    return registeredMemberHours.keySet().stream().mapToDouble(member -> member.getHourlyRate() * registeredMemberHours.get(member)).sum();
   }
 
   void addMember(ProjectMember member) {
-    hoursRegistered.put(member, 0.0);
+    registeredMemberHours.put(member, 0.0);
   }
 }
