@@ -44,10 +44,6 @@ public class ProjectTask {
     return hoursRegistered.keySet().stream().mapToDouble(member -> member.getHourlyRate() * hoursRegistered.get(member)).sum();
   }
 
-  public double getBudget() {
-    return members.values().stream().mapToDouble(member -> (member.getHourlyRate() * hoursEstimated) / members.size()).sum();
-  }
-
   public void addMember(ProjectMember member) {
     members.put(member.getId(), member);
   }

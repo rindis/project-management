@@ -34,19 +34,6 @@ public class ProjectTaskTest {
   }
 
   @Test
-  public void getBudget() throws Exception {
-    ProjectTask task = new ProjectTask();
-    double hoursEstimate = 37.5;
-    task.setHoursEstimated(hoursEstimate);
-    ProjectMember member = new ProjectMember();
-    double hourlyRate = 100;
-    member.setHourlyRate(hourlyRate);
-    task.addMember(member);
-
-    assertEquals(hourlyRate * hoursEstimate, task.getBudget(), MIN_VALUE);
-  }
-
-  @Test
   public void addMember() throws Exception {
     ProjectTask task = new ProjectTask();
     ProjectMember member = new ProjectMember();
