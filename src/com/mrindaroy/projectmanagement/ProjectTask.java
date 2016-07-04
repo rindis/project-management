@@ -2,53 +2,40 @@ package com.mrindaroy.projectmanagement;
 
 import java.util.HashMap;
 
-public class ProjectTask {
+class ProjectTask {
   private final HashMap<ProjectMember, Double> hoursRegistered = new HashMap<>();
-  private HashMap<String, ProjectMember> members = new HashMap<>();
   private String id;
   private double hoursEstimated;
 
-  public String getId() {
+  String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  void setId(String id) {
     this.id = id;
   }
 
-  public void registerHours(ProjectMember projectMember, double hoursSpent) {
-    if (hoursRegistered.containsKey(projectMember)) {
-      hoursRegistered.put(projectMember, hoursRegistered.get(projectMember) + hoursSpent);
-    } else {
-      hoursRegistered.put(projectMember, hoursSpent);
-    }
+  void registerHours(ProjectMember projectMember, double hoursSpent) {
+    hoursRegistered.put(projectMember, hoursRegistered.get(projectMember) + hoursSpent);
   }
 
-  public double getHoursEstimated() {
-    return hoursEstimated;
-  }
-
-  public void setHoursEstimated(double hoursEstimated) {
+  void setHoursEstimated(double hoursEstimated) {
     this.hoursEstimated = hoursEstimated;
   }
 
-  public double getHoursRemaining() {
-    return hoursEstimated - getTotalHoursRegistered();
+  double getHoursRemaining() {
+    return hoursEstimated - getHoursRegistered();
   }
 
-  public double getTotalHoursRegistered() {
+  double getHoursRegistered() {
     return hoursRegistered.values().stream().mapToDouble(Double::doubleValue).sum();
   }
 
-  public double getSpending() {
+  double getSpending() {
     return hoursRegistered.keySet().stream().mapToDouble(member -> member.getHourlyRate() * hoursRegistered.get(member)).sum();
   }
 
-  public void addMember(ProjectMember member) {
-    members.put(member.getId(), member);
-  }
-
-  public ProjectMember getMember(String memberId) {
-    return members.get(memberId);
+  void addMember(ProjectMember member) {
+    hoursRegistered.put(member, 0.0);
   }
 }

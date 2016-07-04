@@ -1,26 +1,22 @@
 package com.mrindaroy.projectmanagement;
 
-public class ProjectMember {
-  private Double hourlyRate;
+class ProjectMember {
+  private double hourlyRate;
   private String id;
 
-  public ProjectMember() {
-    this.hourlyRate = hourlyRate;
-  }
-
-  public Double getHourlyRate() {
+  double getHourlyRate() {
     return hourlyRate;
   }
 
-  public void setHourlyRate(Double hourlyRate) {
+  void setHourlyRate(double hourlyRate) {
     this.hourlyRate = hourlyRate;
   }
 
-  public String getId() {
+  String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  void setId(String id) {
     this.id = id;
   }
 }
