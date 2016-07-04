@@ -24,10 +24,10 @@ public class ProjectTaskTest {
     ProjectTask task = new ProjectTask();
     task.setHoursEstimated(37.5);
 
-    double hoursSpent = 12.34;
     ProjectMember member = new ProjectMember();
     double hourlyRate = 100;
     member.setHourlyRate(hourlyRate);
+    double hoursSpent = 12.34;
     task.registerHours(member, hoursSpent);
 
     assertEquals(hoursSpent * hourlyRate, task.getSpending(), MIN_VALUE);

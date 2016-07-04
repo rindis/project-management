@@ -22,8 +22,8 @@ public class Project {
     return tasks.get(taskId);
   }
 
-  public void registerHours(ProjectMember member, ProjectTask task, double hoursSpent) {
-    task.registerHours(member, hoursSpent);
+  public void registerHours(String memberId, String taskId, double hoursSpent) {
+    tasks.get(taskId).registerHours(members.get(memberId), hoursSpent);
   }
 
   public double getTotalHoursRegistered() {
@@ -36,5 +36,13 @@ public class Project {
 
   public double getHoursRemaining() {
     return tasks.values().stream().mapToDouble(ProjectTask::getHoursRemaining).sum();
+  }
+
+  public void addMemberToTask(String memberId, String taskId) {
+    tasks.get(taskId).addMember(members.get(memberId));
+  }
+
+  public double getSpending() {
+    return tasks.values().stream().mapToDouble(ProjectTask::getSpending).sum();
   }
 }
