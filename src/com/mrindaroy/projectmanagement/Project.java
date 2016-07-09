@@ -5,6 +5,7 @@ import java.util.HashMap;
 class Project {
   private final HashMap<String, ProjectMember> members = new HashMap<>();
   private final HashMap<String, ProjectTask> tasks = new HashMap<>();
+  private String id;
 
   void addMember(ProjectMember member) {
     members.put(member.getId(), member);
@@ -36,5 +37,13 @@ class Project {
 
   double getSpending() {
     return tasks.values().stream().mapToDouble(ProjectTask::getSpending).sum();
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
   }
 }
